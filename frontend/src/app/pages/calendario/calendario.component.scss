@@ -1,0 +1,21 @@
+.div-principal-calendario {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+  .title-agenda {
+    font-size: 50px;
+    background-color: rgb(49, 46, 252);
+    color: white;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    font-weight: 900;
+  }
+  full-calendar {
+    width: 90%;
+  }
+}
