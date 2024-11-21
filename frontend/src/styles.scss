@@ -1,4 +1,114 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.botao-vermelho {
+  position: relative;
+  height: 40px;
+  width: 100px;
+  border-radius: 20px;
+  background-color: white;
+  border: 2px solid rgb(249, 57, 57);
+  color: rgb(249, 57, 57);
+  font-weight: 600;
+  overflow: hidden;
+  transition: color 0.4s ease; /* Para suavizar a troca de cor */
+  cursor: pointer;
+}
+
+.botao-vermelho::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 300%;
+  background-color: rgb(249, 57, 57);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease;
+  z-index: 0; /* Garantir que esteja atrás do texto */
+}
+
+.botao-vermelho:hover::before {
+  width: 150%; /* Aumenta o círculo para cobrir todo o botão */
+}
+
+.botao-vermelho:hover {
+  color: white; /* Troca a cor do texto no hover */
+}
+
+.botao-vermelho span {
+  position: relative;
+  z-index: 1; /* Garante que o texto esteja na frente */
+}
+
+.botao-verde {
+  position: relative;
+  height: 40px;
+  width: 100px;
+  border-radius: 20px;
+  background-color: white;
+  border: 2px solid rgb(105, 249, 57);
+  color: rgb(105, 249, 57);
+  font-weight: 600;
+  overflow: hidden;
+  transition: color 0.4s ease; /* Para suavizar a troca de cor */
+  cursor: pointer;
+}
+
+.botao-verde::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 300%;
+  background-color: rgb(105, 249, 57);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease;
+  z-index: 0; /* Garantir que esteja atrás do texto */
+}
+
+.botao-verde:hover::before {
+  width: 150%; /* Aumenta o círculo para cobrir todo o botão */
+}
+
+.botao-verde:hover {
+  color: white; /* Troca a cor do texto no hover */
+}
+
+.botao-verde span {
+  position: relative;
+  z-index: 1; /* Garante que o texto esteja na frente */
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: rgba(165, 165, 183, 0.519) !important;
+}
+
+.mat-mdc-form-field:not(.mat-form-field-disabled)
+  .mat-mdc-floating-label.mdc-floating-label {
+  color: black !important;
+  font-size: 12px;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  color: #211fab !important;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  height: 45px !important;
+}
+
+.mdc-text-field--filled .mdc-line-ripple {
+  display: none !important; /* Esconde a linha de realce */
+}

@@ -1,0 +1,24 @@
+body {
+  background-color: white;
+  padding: 30px;
+}
+
+.div-principal-modal-agendamento {
+  height: 100%;
+  .form-dados-agendamento {
+    width: 100&;
+    height: 90%;
+    mat-form-field {
+      width: 100%;
+    }
+    .horarios {
+      display: flex;
+      gap: 30px;
+    }
+  }
+  .botoes-footer {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+  }
+}

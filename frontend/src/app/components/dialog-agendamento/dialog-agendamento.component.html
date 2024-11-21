@@ -1,0 +1,50 @@
+<body>
+  <div class="div-principal-modal-agendamento">
+    <form class="form-dados-agendamento">
+      <mat-form-field>
+        <mat-label>Seu nome</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Em qual congregação será a agenda?</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Número para contato</mat-label>
+        <input
+          [imask]="{ mask: '(00) 00000-0000' }"
+          placeholder="00 00000-0000"
+          matInput
+        />
+      </mat-form-field>
+      <div class="horarios">
+        <mat-form-field>
+          <mat-label>Hora do início do evento</mat-label>
+          <input
+            [format]="24"
+            matInput
+            [ngxMatTimepicker]="picker"
+            placeholder="HH:mm"
+          />
+          <ngx-mat-timepicker #picker></ngx-mat-timepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Hora do fim do evento (previsto)</mat-label>
+          <input
+            [format]="24"
+            matInput
+            [ngxMatTimepicker]="pickerFim"
+            placeholder="HH:mm"
+          />
+          <ngx-mat-timepicker #pickerFim></ngx-mat-timepicker>
+        </mat-form-field>
+      </div>
+    </form>
+    <div class="botoes-footer">
+      <button (click)="onCLoseModal()" class="botao-vermelho">
+        <span>Cancelar</span>
+      </button>
+      <button class="botao-verde"><span>Salvar</span></button>
+    </div>
+  </div>
+</body>

@@ -2,6 +2,7 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { MatDialog } from '@angular/material/dialog';
 import {
   CalendarOptions,
   DateSelectArg,
@@ -14,6 +15,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import { INITIAL_EVENTS, createEventId } from './event-utils';
 import ptBrLocale from '@fullcalendar/core/locales/pt-br';
+import { DialogAgendamentoComponent } from '../../components/dialog-agendamento/dialog-agendamento.component';
 
 @Component({
   selector: 'app-calendario',
@@ -45,7 +47,10 @@ export class CalendarioComponent {
     eventsSet: this.handleEvents.bind(this),
   };
 
-  constructor(private changeDetector: ChangeDetectorRef) {}
+  constructor(
+    private changeDetector: ChangeDetectorRef,
+    private dialog: MatDialog
+  ) {}
 
   handleCalendarToggle() {
     this.calendarVisible = !this.calendarVisible;
@@ -56,20 +61,7 @@ export class CalendarioComponent {
   }
 
   handleDateSelect(selectInfo: DateSelectArg) {
-    const title = prompt('Please enter a new title for your event');
-    const calendarApi = selectInfo.view.calendar;
-
-    calendarApi.unselect(); // clear date selection
-
-    if (title) {
-      calendarApi.addEvent({
-        id: createEventId(),
-        title,
-        start: selectInfo.startStr,
-        end: selectInfo.endStr,
-        allDay: selectInfo.allDay,
-      });
-    }
+    this.openModal();
   }
 
   handleEventClick(clickInfo: EventClickArg) {
@@ -85,5 +77,13 @@ export class CalendarioComponent {
   handleEvents(events: EventApi[]) {
     this.currentEvents = events; // Atualiza diretamente a array
     this.changeDetector.detectChanges(); // Atualiza a view manualmente se necessário
+  }
+
+  openModal(): void {
+    this.dialog.open(DialogAgendamentoComponent, {
+      width: '700px', // Largura do modal
+      height: '500px',
+      data: { message: 'Mensagem passada para o modal!' }, // Dados opcionais
+    });
   }
 }
