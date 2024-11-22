@@ -40,7 +40,7 @@ export class CalendarioComponent {
     selectable: true,
     selectMirror: true,
     dayMaxEvents: true,
-    height: '80vh',
+    height: '85vh',
     locale: ptBrLocale,
     select: this.handleDateSelect.bind(this),
     eventClick: this.handleEventClick.bind(this),

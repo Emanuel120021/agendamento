@@ -112,3 +112,7 @@ body {
 .mdc-text-field--filled .mdc-line-ripple {
   display: none !important; /* Esconde a linha de realce */
 }
+
+fc-scroller fc-scroller-liquid-absolute {
+  overflow: hidden !important;
+}
