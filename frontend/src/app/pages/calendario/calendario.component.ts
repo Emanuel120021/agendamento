@@ -13,7 +13,6 @@ import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
-import { INITIAL_EVENTS, createEventId } from './event-utils';
 import ptBrLocale from '@fullcalendar/core/locales/pt-br';
 import { DialogAgendamentoComponent } from '../../components/dialog-agendamento/dialog-agendamento.component';
 
@@ -25,8 +24,8 @@ import { DialogAgendamentoComponent } from '../../components/dialog-agendamento/
   styleUrls: ['./calendario.component.scss'],
 })
 export class CalendarioComponent {
-  calendarVisible: boolean = true; // Substituído por uma propriedade boolean
-  currentEvents: EventApi[] = []; // Substituído por uma array simples
+  calendarVisible: boolean = true;
+  currentEvents: EventApi[] = [];
   calendarOptions: CalendarOptions = {
     plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin, listPlugin],
     headerToolbar: {
@@ -45,6 +44,7 @@ export class CalendarioComponent {
     select: this.handleDateSelect.bind(this),
     eventClick: this.handleEventClick.bind(this),
     eventsSet: this.handleEvents.bind(this),
+    dateClick: this.handleDateClick.bind(this), // Garante que cliques em dias também abram o modal
   };
 
   constructor(
@@ -57,11 +57,15 @@ export class CalendarioComponent {
   }
 
   handleWeekendsToggle() {
-    this.calendarOptions.weekends = !this.calendarOptions.weekends; // Atualiza diretamente a propriedade
+    this.calendarOptions.weekends = !this.calendarOptions.weekends;
   }
 
   handleDateSelect(selectInfo: DateSelectArg) {
-    this.openModal();
+    this.openModal(selectInfo.startStr); // Passa a data selecionada para o modal
+  }
+
+  handleDateClick(dateInfo: any) {
+    this.openModal(dateInfo.dateStr); // Para dispositivos onde o `select` não funciona
   }
 
   handleEventClick(clickInfo: EventClickArg) {
@@ -75,11 +79,11 @@ export class CalendarioComponent {
   }
 
   handleEvents(events: EventApi[]) {
-    this.currentEvents = events; // Atualiza diretamente a array
-    this.changeDetector.detectChanges(); // Atualiza a view manualmente se necessário
+    this.currentEvents = events;
+    this.changeDetector.detectChanges();
   }
 
-  openModal(): void {
+  openModal(date?: any): void {
     this.dialog.open(DialogAgendamentoComponent, {
       width: '700px', // Largura do modal
       height: '500px',
