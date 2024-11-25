@@ -5,15 +5,28 @@
   align-items: center;
   flex-direction: column;
   gap: 50px;
-  .title-agenda {
-    font-size: 50px;
+  .div-title-agenda {
     background-color: rgb(174, 173, 255);
-    color: white;
     width: 100%;
     height: 60px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     font-weight: 300;
+    .title-agenda {
+      font-size: 50px;
+      color: white;
+    }
+    .btn-title-agenda {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      color: white;
+      .material-icons {
+        font-size: 40px !important;
+        width: 40px;
+        height: 40px;
+      }
+    }
   }
   full-calendar {
     width: 90%;

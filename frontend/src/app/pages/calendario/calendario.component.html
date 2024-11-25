@@ -1,4 +1,10 @@
 <div class="div-principal-calendario">
-  <div class="title-agenda">Agenda Kairós</div>
+  <div class="div-title-agenda">
+    <span></span>
+    <span class="title-agenda">Agenda Kairós</span>
+    <button class="btn-title-agenda" (click)="openModalLogin()">
+      <mat-icon class="icon-title-agenda">supervisor_account</mat-icon>
+    </button>
+  </div>
   <full-calendar [options]="calendarOptions"></full-calendar>
 </div>
